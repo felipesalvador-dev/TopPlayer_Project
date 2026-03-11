@@ -29,3 +29,11 @@ export async function buscarUsuariosPorEmail(email) {
 
     return resultado[0];
 }
+
+export async function deletarUsuarios(id) {
+    const [resultado] = await conexao.query(
+        "DELETE FROM usuarios WHERE id = ?",
+        [id]
+    );
+    return resultado
+}

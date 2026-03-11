@@ -72,3 +72,14 @@ export async function login(req,res) {
         }
     })
 }
+
+export async function deletar(req,res) {
+    const usuario = await usuarioModels.buscarPorId(req.params.id)
+
+    if (!usuario){
+        return res.status(404).json({msg: "Usuário não encontrado"})
+    }
+    await usuarioModels.deletarUsuarios(req.params.id)
+
+    res.status(200).json({msg: "Usuário deletado com sucesso"})
+} 
